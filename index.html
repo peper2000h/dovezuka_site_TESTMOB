@@ -320,7 +320,7 @@
             font-size: 0.8rem;
         }
 
-        /* Hero */
+        /* ===== HERO — ГЛАВНАЯ СТРАНИЦА ===== */
         .hero {
             position: relative;
             background-color: var(--color-bg-secondary);
@@ -328,6 +328,7 @@
             padding: 50px 15px 30px;
             min-height: auto;
             display: flex;
+            flex-direction: column;
             align-items: center;
             margin-bottom: var(--section-gap);
         }
@@ -357,31 +358,33 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(212,175,55,0.1), transparent 60%);
+            background: radial-gradient(circle at 30% 50%, rgba(212,175,55,0.08), transparent 60%);
         }
 
         .hero__content {
             position: relative;
             z-index: 2;
             width: 100%;
+            max-width: 600px;
             text-align: center;
+            order: 1;
         }
 
         .hero__title {
-            font-size: clamp(1.8rem, 6vw, 3rem);
+            font-size: clamp(1.8rem, 5vw, 3rem);
             font-weight: 800;
             margin-bottom: 10px;
             line-height: 1.1;
         }
 
         .hero__subtitle {
-            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
             color: var(--color-text-muted);
             margin-bottom: 8px;
         }
 
         .hero__text {
-            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             color: var(--color-text-muted);
             margin-bottom: 20px;
             padding: 0 5px;
@@ -403,13 +406,15 @@
         /* Изображение с эффектом фар */
         .hero__image {
             position: relative;
-            width: 100%;
             z-index: 1;
+            width: 100%;
+            max-width: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 10px 0;
             pointer-events: auto;
+            order: 2;
         }
 
         .hero__image-wrapper {
@@ -424,7 +429,7 @@
         .hero__image-stack {
             position: relative;
             width: 100%;
-            max-width: 600px;
+            max-width: 500px;
             aspect-ratio: 16 / 9;
             display: flex;
             align-items: center;
@@ -459,7 +464,7 @@
             z-index: 3;
         }
 
-        /* Для десктопа — hover */
+        /* Десктоп — hover */
         @media (hover: hover) {
             .hero__image-stack:hover img:first-child {
                 opacity: 0;
@@ -469,7 +474,7 @@
             }
         }
 
-        /* Для мобильных — toggle по клику */
+        /* Мобильные — toggle по клику */
         .hero__image-stack.active img:first-child {
             opacity: 0;
         }
@@ -1057,31 +1062,45 @@
                 padding: 6px 12px;
             }
 
+            /* ===== HERO — МОБИЛЬНАЯ ВЕРСИЯ ===== */
             .hero {
-                padding: 30px 12px 20px;
+                padding: 20px 12px 10px;
                 margin-bottom: var(--section-gap);
+                flex-direction: column;
             }
 
-            .hero__title {
-                font-size: clamp(1.6rem, 5vw, 2.2rem);
+            .hero__content {
+                order: 1;
+                margin-bottom: 10px;
             }
 
-            .hero__subtitle {
-                font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-            }
-
-            .hero__text {
-                font-size: 0.9rem;
-                padding: 0;
-            }
-
-            .hero__actions .btn {
-                font-size: 0.85rem;
-                padding: 10px 16px;
+            .hero__image {
+                order: 2;
+                padding: 5px 0;
+                max-width: 100%;
             }
 
             .hero__image-stack {
-                max-width: 450px;
+                max-width: 380px;
+            }
+
+            .hero__title {
+                font-size: clamp(1.5rem, 5vw, 1.8rem);
+            }
+
+            .hero__subtitle {
+                font-size: clamp(0.85rem, 2.5vw, 1rem);
+            }
+
+            .hero__text {
+                font-size: 0.85rem;
+                padding: 0;
+                margin-bottom: 15px;
+            }
+
+            .hero__actions .btn {
+                font-size: 0.8rem;
+                padding: 10px 16px;
             }
 
             .section {
@@ -1250,9 +1269,34 @@
         }
 
         @media (max-width: 480px) {
+            .hero {
+                padding: 15px 10px 5px;
+            }
+
+            .hero__image-stack {
+                max-width: 320px;
+            }
+
+            .hero__title {
+                font-size: 1.4rem;
+            }
+
+            .hero__subtitle {
+                font-size: 0.8rem;
+            }
+
+            .hero__text {
+                font-size: 0.8rem;
+            }
+
+            .hero__actions .btn {
+                font-size: 0.75rem;
+                padding: 8px 14px;
+            }
+
             .prices-grid {
                 grid-template-columns: 1fr;
-                max-width: 320px;
+                max-width: 300px;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -1263,18 +1307,18 @@
 
             .gallery {
                 grid-template-columns: 1fr;
-                max-width: 350px;
+                max-width: 300px;
                 margin-left: auto;
                 margin-right: auto;
             }
 
             .gallery-item img {
-                height: 200px;
+                height: 180px;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
-                max-width: 320px;
+                max-width: 300px;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -1290,10 +1334,6 @@
 
             .schedule-item__time {
                 min-width: 50px;
-            }
-
-            .hero__image-stack {
-                max-width: 350px;
             }
 
             .header__menu a {
@@ -1325,13 +1365,17 @@
         }
 
         @media (max-width: 360px) {
-            .header__menu a {
-                font-size: 0.65rem;
-                padding: 2px 4px;
+            .hero__image-stack {
+                max-width: 260px;
             }
 
             .hero__title {
-                font-size: 1.4rem;
+                font-size: 1.2rem;
+            }
+
+            .header__menu a {
+                font-size: 0.65rem;
+                padding: 2px 4px;
             }
 
             .comfort-block__grid {
@@ -1344,7 +1388,7 @@
             }
 
             .gallery-item img {
-                height: 160px;
+                height: 140px;
             }
         }
 
@@ -1418,7 +1462,7 @@
         </div>
     </header>
 
-    <!-- Hero -->
+    <!-- ===== HERO — ГЛАВНАЯ СТРАНИЦА ===== -->
     <section class="hero">
         <div class="hero__bg"></div>
         <div class="hero__content">
@@ -1660,7 +1704,7 @@
         <div class="container">
             <div class="gallery">
                 <div class="gallery-item">
-                    <img src="images/microbuss.jpg" alt="Volkswagen Caravelle для перевозок Костанай-Челябинск">
+                    <img src="images/microbus.jpg" alt="Volkswagen Caravelle для перевозок Костанай-Челябинск">
                     <span class="gallery-item__caption">Volkswagen Caravelle</span>
                 </div>
                 <div class="gallery-item">
@@ -1893,18 +1937,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             var stack = document.getElementById('heroImageStack');
             if (stack) {
-                // Проверяем, что это мобильное устройство (поддерживает touch)
                 var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
                 
                 if (isTouchDevice) {
-                    // На мобильных — toggle по клику
                     stack.addEventListener('click', function(e) {
                         e.preventDefault();
                         this.classList.toggle('active');
                     });
                 } else {
-                    // На десктопе — hover уже работает через CSS
-                    // Добавляем класс для сброса при уходе мыши
                     stack.addEventListener('mouseleave', function() {
                         this.classList.remove('active');
                     });
