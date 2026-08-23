@@ -228,7 +228,7 @@
             border: 2px solid #bc1888;
         }
 
-        /* ===== ШАПКА (ДЕСКТОПНАЯ) ===== */
+        /* ===== ШАПКА ===== */
         .header {
             position: sticky;
             top: 0;
@@ -275,20 +275,20 @@
             color: var(--color-text-muted);
         }
 
-        /* Десктопная навигация (видна на компьютере) */
-        .header__nav-desktop {
+        /* ===== ДЕСКТОПНАЯ НАВИГАЦИЯ ===== */
+        .header__nav {
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
-        .header__menu-desktop {
+        .header__menu {
             display: flex;
             list-style: none;
             gap: 15px;
         }
 
-        .header__menu-desktop a {
+        .header__menu a {
             position: relative;
             padding: 5px 0;
             font-weight: 500;
@@ -296,7 +296,7 @@
             font-size: 0.95rem;
         }
 
-        .header__menu-desktop a::after {
+        .header__menu a::after {
             content: '';
             position: absolute;
             bottom: -2px;
@@ -307,60 +307,13 @@
             transition: width 0.3s;
         }
 
-        .header__menu-desktop a:hover::after {
-            width: 100%;
-        }
-
-        /* Мобильная навигация (видна на телефонах) */
-        .header__nav-mobile {
-            display: none;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .header__menu-mobile {
-            display: flex;
-            list-style: none;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .header__menu-mobile a {
-            position: relative;
-            padding: 4px 8px;
-            font-weight: 500;
-            color: var(--color-text);
-            font-size: 0.85rem;
-            white-space: nowrap;
-        }
-
-        .header__menu-mobile a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-accent);
-            transition: width 0.3s;
-        }
-
-        .header__menu-mobile a:hover::after {
+        .header__menu a:hover::after {
             width: 100%;
         }
 
         .header__cta {
             padding: 10px 20px;
             font-size: 0.9rem;
-        }
-
-        .header__cta-mobile {
-            padding: 6px 12px;
-            font-size: 0.7rem;
         }
 
         /* ===== HERO ===== */
@@ -1039,20 +992,11 @@
                 --header-height: auto;
             }
 
-            /* Скрываем десктопную навигацию */
-            .header__nav-desktop {
-                display: none !important;
-            }
-
-            /* Показываем мобильную навигацию */
-            .header__nav-mobile {
-                display: flex !important;
-            }
-
             .header__inner {
                 height: auto;
                 padding: 10px 12px;
-                flex-direction: column;
+                flex-direction: row;
+                flex-wrap: wrap;
                 gap: 6px;
             }
 
@@ -1073,9 +1017,33 @@
                 display: none;
             }
 
-            .header__menu-mobile a {
+            .header__nav {
+                width: auto;
+                gap: 6px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            /* Мобильное меню — в одну строку, без "Вопросы" */
+            .header__menu {
+                gap: 6px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            .header__menu a {
                 font-size: 0.75rem;
                 padding: 4px 6px;
+            }
+
+            /* Скрываем пункт "Вопросы" на мобильных */
+            .header__menu .faq-link {
+                display: none;
+            }
+
+            .header__cta {
+                font-size: 0.7rem;
+                padding: 6px 12px;
             }
 
             /* ===== HERO — МОБИЛЬНАЯ ВЕРСИЯ ===== */
@@ -1381,7 +1349,7 @@
                 min-width: 50px;
             }
 
-            .header__menu-mobile a {
+            .header__menu a {
                 font-size: 0.7rem;
                 padding: 3px 5px;
             }
@@ -1418,7 +1386,7 @@
                 font-size: 1.2rem;
             }
 
-            .header__menu-mobile a {
+            .header__menu a {
                 font-size: 0.65rem;
                 padding: 2px 4px;
             }
@@ -1493,31 +1461,19 @@
                 <span class="header__logo-sub">Костанай ↔ Челябинск</span>
             </a>
 
-            <!-- ===== ДЕСКТОПНАЯ НАВИГАЦИЯ (ВИДНА ТОЛЬКО НА КОМПЬЮТЕРЕ) ===== -->
-            <nav class="header__nav-desktop" aria-label="Главная навигация">
-                <ul class="header__menu-desktop">
+            <!-- ===== НАВИГАЦИЯ (ОБЩАЯ ДЛЯ ВСЕХ УСТРОЙСТВ) ===== -->
+            <nav class="header__nav" aria-label="Главная навигация">
+                <ul class="header__menu">
                     <li><a href="#prices">Цены</a></li>
                     <li><a href="#schedule">Расписание</a></li>
                     <li><a href="#comfort">Комфорт</a></li>
                     <li><a href="#gallery">Автопарк</a></li>
                     <li><a href="#services">Услуги</a></li>
-                    <li><a href="#faq">Вопросы</a></li>
+                    <!-- На компьютере показываем "Вопросы", на мобильных скрываем через CSS -->
+                    <li class="faq-link"><a href="#faq">Вопросы</a></li>
                     <li><a href="#contacts">Контакты</a></li>
                 </ul>
                 <a href="https://wa.me/77773760262" class="btn btn--primary header__cta">Забронировать</a>
-            </nav>
-
-            <!-- ===== МОБИЛЬНАЯ НАВИГАЦИЯ (ВИДНА ТОЛЬКО НА ТЕЛЕФОНАХ) ===== -->
-            <nav class="header__nav-mobile" aria-label="Мобильная навигация">
-                <ul class="header__menu-mobile">
-                    <li><a href="#prices">Цены</a></li>
-                    <li><a href="#schedule">Расписание</a></li>
-                    <li><a href="#comfort">Комфорт</a></li>
-                    <li><a href="#gallery">Автопарк</a></li>
-                    <li><a href="#services">Услуги</a></li>
-                    <li><a href="#contacts">Контакты</a></li>
-                </ul>
-                <a href="https://wa.me/77773760262" class="btn btn--primary header__cta-mobile">Забронировать</a>
             </nav>
         </div>
     </header>
@@ -1531,7 +1487,6 @@
             <p class="hero__text">Поездки между Костанаем и Челябинском на комфортабельных микроавтобусах Volkswagen Caravelle и Kia Carnival. Опытные водители, климат-контроль, чистота. Бронирование через диспетчера.</p>
             <div class="hero__actions">
                 <a href="https://wa.me/77773760262" class="btn btn--primary btn--large">Забронировать место</a>
-                <!-- На компьютере: "Позвонить диспетчеру", на телефоне: "Позвонить" — текст меняется через CSS -->
                 <a href="tel:+77773760262" class="btn btn--outline btn--large hero__call-btn">Позвонить диспетчеру</a>
             </div>
         </div>
