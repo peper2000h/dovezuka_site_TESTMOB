@@ -2133,7 +2133,27 @@
 
     <!-- ===== ОТЗЫВЫ ===== -->
     <section class="section" id="reviews">
-        <h2 class="section__title">Отзывы наших клиентов <span style="color: red; font-size: 50px;">&#10084;</h2>
+<style>
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.15); /* Увеличение на 15% */
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .pulsing-heart {
+    color: red;
+    font-size: 50px;
+    display: inline-block; /* Обязательно для работы transform */
+    animation: pulse 1.2s infinite ease-in-out; /* Скорость пульсации */
+  }
+</style>
+        <h2 class="section__title">Отзывы наших клиентов <span class="pulsing-heart">❤</span></h2>
         <p class="section__subtitle">Что говорят о нас пассажиры</p>
         <div class="container">
             <div class="reviews-carousel">
