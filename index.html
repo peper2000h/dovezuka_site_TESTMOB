@@ -1086,7 +1086,6 @@
                 pointer-events: auto;
                 max-width: 480px;
                 aspect-ratio: 16 / 9;
-                /* Анимация та же – slideIn, переопределение не требуется */
             }
 
             .hero__image-stack img {
@@ -1951,22 +1950,25 @@
     </div>
 
     <script>
-        // ===== МОБИЛЬНЫЙ ТОГГЛ ДЛЯ ФАР =====
+        // ===== УПРАВЛЕНИЕ ФАРАМИ (hover для ПК, клик для планшетов/телефонов) =====
         document.addEventListener('DOMContentLoaded', function() {
             var stack = document.getElementById('heroImageStack');
-            if (stack) {
-                var isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-                
-                if (isTouchDevice) {
-                    stack.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        this.classList.toggle('active');
-                    });
-                } else {
-                    stack.addEventListener('mouseleave', function() {
-                        this.classList.remove('active');
-                    });
-                }
+            if (!stack) return;
+
+            var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+            if (isTouch) {
+                // На touch-устройствах переключаем по клику (вкл/выкл)
+                stack.addEventListener('click', function(e) {
+                    e.preventDefault(); // предотвращаем случайное выделение
+                    this.classList.toggle('active');
+                });
+            } else {
+                // На десктопе используем CSS-псевдокласс :hover – дополнительный скрипт не нужен,
+                // но оставляем возможность убрать класс при уходе мыши (на случай, если класс был добавлен через консоль)
+                stack.addEventListener('mouseleave', function() {
+                    this.classList.remove('active');
+                });
             }
         });
 
