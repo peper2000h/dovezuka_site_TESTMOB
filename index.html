@@ -1761,6 +1761,13 @@
             }
         }
 
+        /* ===== ДОПОЛНИТЕЛЬНО: 5 КОЛОНОК ДЛЯ УСЛУГ НА ДЕСКТОПЕ ===== */
+        @media (min-width: 992px) {
+            .services-grid {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
