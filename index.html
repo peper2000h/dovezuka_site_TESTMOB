@@ -463,15 +463,18 @@
             z-index: 3;
         }
 
+        /* ===== HOVER для устройств с мышью (но не для touch) ===== */
         @media (hover: hover) {
-            .hero__image-stack:hover img:first-child {
+            /* Если у body нет класса 'touch', то работаем как обычно */
+            body:not(.touch) .hero__image-stack:hover img:first-child {
                 opacity: 0;
             }
-            .hero__image-stack:hover img:last-child {
+            body:not(.touch) .hero__image-stack:hover img:last-child {
                 opacity: 1;
             }
         }
 
+        /* ===== АКТИВНЫЙ КЛАСС (включается по клику на touch) ===== */
         .hero__image-stack.active img:first-child {
             opacity: 0;
         }
@@ -1950,22 +1953,23 @@
     </div>
 
     <script>
-        // ===== УПРАВЛЕНИЕ ФАРАМИ (hover для ПК, клик для планшетов/телефонов) =====
+        // ===== УПРАВЛЕНИЕ ФАРАМИ =====
         document.addEventListener('DOMContentLoaded', function() {
             var stack = document.getElementById('heroImageStack');
             if (!stack) return;
 
+            // Определяем, есть ли поддержка touch
             var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
             if (isTouch) {
-                // На touch-устройствах переключаем по клику (вкл/выкл)
+                // Добавляем класс touch на body, чтобы отключить hover в CSS
+                document.body.classList.add('touch');
+                // На touch-устройствах переключаем по клику
                 stack.addEventListener('click', function(e) {
-                    e.preventDefault(); // предотвращаем случайное выделение
+                    e.preventDefault();
                     this.classList.toggle('active');
                 });
             } else {
-                // На десктопе используем CSS-псевдокласс :hover – дополнительный скрипт не нужен,
-                // но оставляем возможность убрать класс при уходе мыши (на случай, если класс был добавлен через консоль)
+                // На десктопе при уходе мыши убираем active (на случай, если был добавлен через консоль)
                 stack.addEventListener('mouseleave', function() {
                     this.classList.remove('active');
                 });
