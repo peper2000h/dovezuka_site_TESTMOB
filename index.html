@@ -186,6 +186,15 @@
                     "@type": "Answer",
                     "text": "Да, возможен трансфер с посадкой или высадкой в городе Рудный. Для этого необходимо заранее сообщить диспетчеру, и он рассчитает точное время и стоимость."
                 }
+            },
+            {
+                "@type": "Question",
+                "name": "Есть ли поездки из Костаная в Екатеринбург?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Да, мы также осуществляем пассажирские перевозки из Костаная в Екатеринбург и из Екатеринбурга в Костанай. Поездки доступны по предварительной записи. Чтобы уточнить ближайшую дату, время отправления и стоимость проезда, свяжитесь с нашим диспетчером."
+                }
+            },
             {
                 "@type": "Question",
                 "name": "Как связаться с диспетчером?",
@@ -193,15 +202,12 @@
                     "@type": "Answer",
                     "text": "Позвоните по номеру +7 777 376 0262 или напишите в WhatsApp / Telegram / MAX / imo. Диспетчер: Ольга."
                 }
-            },
             }
         ]
     }
     </script>
 
-    <!-- Остальные стили не меняем -->
     <style>
-        /* ... весь существующий CSS остаётся без изменений ... */
         :root {
             --color-bg: #0A0D0F;
             --color-bg-secondary: #12171A;
@@ -261,7 +267,6 @@
             padding: 0 20px;
         }
 
-        /* ===== КНОПКИ ===== */
         .btn {
             display: inline-block;
             padding: 12px 24px;
@@ -333,7 +338,6 @@
             border: 2px solid #bc1888;
         }
 
-        /* ===== ШАПКА ===== */
         .header {
             position: sticky;
             top: 0;
@@ -420,7 +424,6 @@
             font-size: 0.9rem;
         }
 
-        /* ===== HERO ===== */
         .hero {
             position: relative;
             background-color: var(--color-bg-secondary);
@@ -637,7 +640,6 @@
             opacity: 1;
         }
 
-        /* ===== СЕКЦИИ ===== */
         .section {
             padding: 60px 20px;
             margin-bottom: var(--section-gap);
@@ -667,7 +669,6 @@
             margin-top: 30px;
         }
 
-        /* ===== ЦЕНЫ ===== */
         .prices-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -712,7 +713,6 @@
             margin-top: 10px;
         }
 
-        /* ===== РАСПИСАНИЕ ===== */
         .schedule-tabs {
             max-width: 800px;
             margin: 0 auto;
@@ -791,7 +791,6 @@
             font-size: 0.85rem;
         }
 
-        /* ===== ВРЕМЯ В ПУТИ ===== */
         .travel-time__diagrams {
             display: flex;
             flex-direction: column;
@@ -831,7 +830,6 @@
             z-index: 1;
         }
 
-        /* ===== КОМФОРТ ===== */
         .comfort-block__grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -867,13 +865,13 @@
             color: var(--color-text-muted);
         }
 
-        /* ===== ГАЛЕРЕЯ ===== */
+        /* ===== ГАЛЕРЕЯ – 3 колонки на десктопе ===== */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin-top: 30px;
-        }
+        }ы
 
         .gallery-item {
             display: flex;
@@ -907,7 +905,6 @@
             font-weight: 500;
         }
 
-        /* ===== УСЛУГИ ===== */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -945,7 +942,6 @@
             flex-grow: 1;
         }
 
-        /* ===== КАРУСЕЛЬ ОТЗЫВОВ ===== */
         .reviews-carousel {
             position: relative;
             max-width: 900px;
@@ -1049,7 +1045,6 @@
             border-color: var(--color-accent);
         }
 
-        /* ===== LIGHTBOX ===== */
         .lightbox {
             position: fixed;
             top: 0;
@@ -1177,7 +1172,6 @@
             background: rgba(255,255,255,0.2);
         }
 
-        /* ===== ШАГИ ===== */
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1200,7 +1194,6 @@
             margin-bottom: 10px;
         }
 
-        /* ===== КОНТАКТЫ ===== */
         .contacts-card {
             max-width: 500px;
             margin: 0 auto;
@@ -1229,7 +1222,6 @@
             margin-top: 20px;
         }
 
-        /* ===== ФОРМА ===== */
         .booking-form {
             max-width: 600px;
             margin: 0 auto;
@@ -1273,7 +1265,6 @@
             margin-top: 15px;
         }
 
-        /* ===== FAQ ===== */
         .faq-accordion {
             max-width: 800px;
             margin: 0 auto;
@@ -1320,7 +1311,6 @@
             display: block;
         }
 
-        /* ===== ФУТЕР ===== */
         .footer {
             background-color: var(--color-bg-secondary);
             padding: 40px 20px 20px;
@@ -1337,7 +1327,6 @@
             margin: 5px 10px;
         }
 
-        /* ===== FLOATING BUTTONS ===== */
         .fab-container {
             position: fixed;
             bottom: 20px;
@@ -1386,9 +1375,6 @@
             background-color: #FFD700;
         }
 
-        /* ================================================================ */
-        /* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
-        /* ================================================================ */
         @media (max-width: 768px) {
             :root {
                 --section-gap: 40px;
@@ -1573,7 +1559,7 @@
             }
 
             .gallery {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
 
@@ -1863,7 +1849,6 @@
             }
         }
 
-        /* ===== ДОПОЛНИТЕЛЬНО: 5 КОЛОНОК ДЛЯ УСЛУГ НА ДЕСКТОПЕ ===== */
         @media (min-width: 992px) {
             .services-grid {
                 grid-template-columns: repeat(5, 1fr);
@@ -2180,12 +2165,13 @@
         </div>
     </section>
 
-    <!-- ===== ГАЛЕРЕЯ ===== -->
+    <!-- ===== ГАЛЕРЕЯ – 3 сверху + 3 снизу ===== -->
     <section class="section" id="gallery">
-        <h2 class="section__title">Автопарк транспорта DOVEZUKA</h2>
+        <h2 class="section__title">Автопарк транспорта</h2>
         <p class="section__subtitle">Наши автомобили обеспечивают комфорт в каждой поездке</p>
         <div class="container">
             <div class="gallery">
+                <!-- Верхний ряд – 3 фото -->
                 <div class="gallery-item">
                     <img src="images/microbuss.jpg" alt="Volkswagen Caravelle — микроавтобус для пассажирских перевозок Костанай-Челябинск">
                     <span class="gallery-item__caption">Volkswagen Caravelle</span>
@@ -2197,6 +2183,20 @@
                 <div class="gallery-item">
                     <img src="images/bagage_bus.jpg" alt="Багажное отделение микроавтобуса DOVEZUKA для перевозки багажа Костанай-Челябинск">
                     <span class="gallery-item__caption">Багажное отделение</span>
+                </div>
+
+                <!-- Нижний ряд – 3 фото -->
+                <div class="gallery-item">
+                    <img src="images/microbuss2.jpg" alt="Микроавтобус DOVEZUKA в пути">
+                    <span class="gallery-item__caption">Volkswagen Caravelle</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/salon_bus2.jpg" alt="Удобные кресла в салоне микроавтобуса">
+                    <span class="gallery-item__caption">Просторный салон</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/bagage_bus2.jpg" alt="Вместительное багажное отделение">
+                    <span class="gallery-item__caption">Вместительный багажник</span>
                 </div>
             </div>
         </div>
@@ -2503,7 +2503,7 @@
                         <span class="faq-item__icon">+</span>
                     </button>
                     <div class="faq-item__answer">Да, лучше бронировать место заранее. Это позволит диспетчеру выбрать подходящий рейс и гарантировать наличие свободного места.</div>
-		</div>
+                </div>
                 <div class="faq-item">
                     <button class="faq-item__question" onclick="toggleFAQ(this)">
                         <span>Есть ли поездки из Рудного в Челябинск?</span>
